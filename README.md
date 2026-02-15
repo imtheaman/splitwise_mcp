@@ -1,6 +1,6 @@
 # Splitwise MCP Server
 
-Ruby MCP server exposing 35 Splitwise API tools for Claude Desktop via the [Model Context Protocol](https://modelcontextprotocol.io).
+Ruby MCP server exposing 35 Splitwise API tools via the [Model Context Protocol](https://modelcontextprotocol.io). Works with any MCP-compatible client — Claude Code, Claude Desktop, Cursor, and more.
 
 ## Prerequisites
 
@@ -10,13 +10,13 @@ Ruby MCP server exposing 35 Splitwise API tools for Claude Desktop via the [Mode
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/splitwise-mcp.git
-cd splitwise-mcp
+git clone https://github.com/imtheaman/splitwise_mcp.git
+cd splitwise_mcp
 bundle install
-cp .env.example .env
+cp .env.example .env   # optional — only needed for MCP Inspector / standalone use
 ```
 
-Edit `.env` and add your Splitwise API key.
+If using `.env`, edit it and add your Splitwise API key. When using an MCP client (Claude Code, Cursor, etc.), you can pass the key via the `"env"` block in the client config instead.
 
 ## Getting Your API Key
 
@@ -45,7 +45,7 @@ Add this to your `~/.mcp.json`:
   "mcpServers": {
     "splitwise_mcp": {
       "command": "ruby",
-      args: [server.rb],
+      "args": ["server.rb"],
       "cwd": "/path/to/splitwise-mcp",
       "env": {
         "SPLITWISE_API_KEY": "YOUR_API_KEY"
@@ -66,12 +66,53 @@ Add this to your `claude_desktop_config.json`:
       "command": "ruby",
       "args": ["server.rb"],
       "cwd": "/path/to/splitwise-mcp",
-      env: {
+      "env": {
         "SPLITWISE_API_KEY": "YOUR_API_KEY"
       }
     }
   }
 }
+```
+
+## Cursor Setup
+
+Add this to your project-level `.cursor/mcp.json` or global `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "splitwise_mcp": {
+      "command": "ruby",
+      "args": ["server.rb"],
+      "cwd": "/path/to/splitwise-mcp",
+      "env": {
+        "SPLITWISE_API_KEY": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+## Prompt Examples
+
+Here are some example prompts you can use with this MCP server:
+
+```
+"How much does John owe me?"
+
+"Here's the bill image — split it between me, John, and Sarah in the NYC Trip group. I had the burger, John had pasta, and Sarah had the salad"
+
+"Show me all expenses from last month in the Roommates group"
+
+"Create a new group called 'Goa Trip' and add john@example.com and sarah@example.com"
+
+"Delete the duplicate lunch expense from yesterday"
+
+"What are my recent notifications?"
+
+"Show me my balance with Sarah"
+
+"Here's a photo of the receipt — read it and add the expense split between me and my roommates"
 ```
 
 ## MCP Inspector
