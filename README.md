@@ -10,6 +10,12 @@ Ruby MCP server exposing 35 Splitwise API tools via the [Model Context Protocol]
 ## Installation
 
 ```bash
+# install homebrew if not installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+```bash
+brew install ruby
 git clone https://github.com/imtheaman/splitwise_mcp.git
 cd splitwise_mcp
 bundle install
@@ -98,21 +104,35 @@ Add this to your project-level `.cursor/mcp.json` or global `~/.cursor/mcp.json`
 Here are some example prompts you can use with this MCP server:
 
 ```
-"How much does John owe me?"
+How much does John owe me?
+```
 
-"Here's the bill image — split it between me, John, and Sarah in the NYC Trip group. I had the burger, John had pasta, and Sarah had the salad"
+```
+Here's the bill image — split it between me, John, and Sarah in the NYC Trip group. I had the burger, John had pasta, and Sarah had the salad
+```
 
-"Show me all expenses from last month in the Roommates group"
+```
+Show me all expenses from last month in the Roommates group
+```
 
-"Create a new group called 'Goa Trip' and add john@example.com and sarah@example.com"
+```
+Create a new group called 'Goa Trip' and add john@example.com and sarah@example.com
+```
 
-"Delete the duplicate lunch expense from yesterday"
+```
+Delete the duplicate lunch expense from yesterday
+```
 
-"What are my recent notifications?"
+```
+What are my recent notifications?
+```
 
-"Show me my balance with Sarah"
+```
+Show me my balance with Sarah
+```
 
-"Here's a photo of the receipt — read it and add the expense split between me and my roommates"
+```
+Here's a photo of the receipt — read it and add the expense split between me and my roommates
 ```
 
 ## MCP Inspector
